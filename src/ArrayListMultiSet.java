@@ -56,18 +56,15 @@ public class ArrayListMultiSet extends MultiSet {
      */
     @Override
     int count(int item) {
-        if (!lst.contains(item)){
-            return 0;
-        } else {
-            int count = 0;
-            for (int i : lst) {
-                if (i == item) {
-                    count++;
-                }
+        int count = 0;
+        for (int i : lst) {
+            if (i == item) {
+                count++;
             }
-
-            return count;
         }
+
+        return count;
+
     }
 
     /**
@@ -76,11 +73,5 @@ public class ArrayListMultiSet extends MultiSet {
     @Override
     int size() {
         return lst.size();
-    }
-
-    void print() {
-        for (int i = 0; i < lst.size(); i++) {
-            System.out.print(lst.get(i) + " ");
-        }
     }
 }

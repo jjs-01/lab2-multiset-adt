@@ -10,47 +10,20 @@ public class Main {
     public static void main(String[] args) {
 
         // this corresponds to the main block from the provided python code
-//        List<MultiSet> multisets = new ArrayList<>();
-//        multisets.add(new BSTMultiSet());
-//        multisets.add(new LinkedListMultiSet());
-//        multisets.add(new ArrayListMultiSet());
-//        multisets.add(new TreeMultiSet());
-//
-//
-//        for (MultiSet m :
-//                multisets) {
-//            for (int n :
-//                    new int[] {500, 1000, 2000, 4000, 8000, 16000}) {
-//                profileMultiSet(m, n);
-//            }
-//        }
+        List<MultiSet> multisets = new ArrayList<>();
+        multisets.add(new BSTMultiSet());
+        multisets.add(new LinkedListMultiSet());
+        multisets.add(new ArrayListMultiSet());
+        multisets.add(new TreeMultiSet());
 
-        ArrayListMultiSet lst = new ArrayListMultiSet();
-        lst.add(1);
-        lst.add(2);
-        lst.add(3);
-        System.out.println(lst.size()); // should be 3
-        lst.add(1);
-        lst.add(1);
-        System.out.println(lst.size()); // should be 5
-        lst.print();
-        System.out.println();
-        System.out.println();
-        lst.remove(3);
-        lst.print();
-        System.out.println();
-        System.out.println();
-        System.out.println(lst.contains(3));
-        System.out.println(lst.size()); // should be 4
-        System.out.println(lst.count(1));
-        System.out.println();
-        System.out.println();
-        lst.print();
-        System.out.println();
-        System.out.println();
-        lst.remove(4);
-        lst.print();
 
+        for (MultiSet m :
+                multisets) {
+            for (int n :
+                    new int[] {500, 1000, 2000, 4000, 8000, 16000}) {
+                profileMultiSet(m, n);
+            }
+        }
 
     }
 

@@ -25,9 +25,7 @@ public class ArrayListMultiSet extends MultiSet {
     @Override
     void remove(int item) {
 
-        if (lst.contains(item)) {
-            lst.remove(item);
-        }
+        lst.remove(Integer.valueOf(item));
 
     }
 

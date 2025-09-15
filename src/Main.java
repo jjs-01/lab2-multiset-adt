@@ -43,8 +43,14 @@ public class Main {
         System.out.println(lst.contains(3));
         System.out.println(lst.size()); // should be 4
         System.out.println(lst.count(1));
-
+        System.out.println();
+        System.out.println();
         lst.print();
+        System.out.println();
+        System.out.println();
+        lst.remove(4);
+        lst.print();
+
 
     }
 

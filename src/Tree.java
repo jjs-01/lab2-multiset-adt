@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Tree {
 
@@ -11,37 +12,88 @@ public class Tree {
     private ArrayList<Tree> children;
     private boolean empty;
 
-    public Tree(){
+    public Tree() {
         this.empty = true;
     }
-    public Tree(int root){
+
+    public Tree(int root) {
         this.root = root;
         this.children = new ArrayList<Tree>();
         this.empty = false;
     }
 
-    public void insert(int item){
+    public void insert(int item) {
+
+        if (this.empty) {
+            this.root = item;
+            this.children = new ArrayList<Tree>();
+            this.empty = false;
+        } //if the tree is empty add item to the root
+        else if (this.children.isEmpty()) {
+            this.children.add(new Tree(item));
+        } //if the tree has no subtrees, create a tree with item and add it to the subtree
+        else {
+            Random r1 = new Random();
+            int index = r1.nextInt(3) + 1;
+            if (index == 3) {
+                this.children.add(new Tree(item));
+            } else {
+                int treeindex = r1.nextInt(this.children.size());
+                this.children.get(treeindex).insert(item);
+            }
+        }
     }
 
-    public void delete_item(int item){
+    public void delete_item(int item) {
 
     }
 
-    public boolean contains(int item){
-        return false;
+    public boolean contains(int item) {
+        if (this.empty) {
+            return false;
+        } else if (this.root == item) {
+            return true;
+        } else {
+            for (Tree child : this.children) {
+                if (child.contains(item)) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
-    public boolean is_empty(){
+    public boolean is_empty() {
         return this.empty;
     }
 
-    public int count(int item){
-        return -1;
+    public int count(int item) {
+        if (this.empty) {
+            return 0;
+        } else {
+            int num = 0;
+            if (this.root == item) {
+                num += 1;
+            }
+            for (Tree child : this.children) {
+                num += child.count(item);
+            }
+            return num;
+        }
     }
 
-    public int size(){
-        return -1;
+    public int size() {
+        if (this.empty){
+            return 0;
+        }else{
+            int count = 1;
+            for (Tree child : this.children) {
+                count += child.size();
+            }
+            return count;
+        }
     }
+
 
     public int getRoot() {
         return root;

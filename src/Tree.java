@@ -44,8 +44,38 @@ public class Tree {
         }
     }
 
-    public void delete_item(int item) {
+    public boolean delete_item(int item) {
+        if (this.empty){
+            return false;
+        } else if (this.root == item) {
+            this.delete_root_help();
+            return true;
+        }else {
+            for (Tree child : this.children) {
+                boolean deleted = child.delete_item(item);
+                if (deleted && child.is_empty()){
+                    this.children.remove(child);
+                    return true;
+                } else if (deleted) {
+                    return true;
+                }else {continue;}
+            }
+            return false;
+        }
 
+    }
+
+    private void delete_root_help(){
+        
+        if(this.children.isEmpty()){
+            this.empty = true;
+        }else {
+            Tree curr = this.children.removeLast();
+            this.root = curr.getRoot();
+            this.children.addAll(curr.getChildren());
+            curr.setChildren(null);
+        }
+        
     }
 
     public boolean contains(int item) {

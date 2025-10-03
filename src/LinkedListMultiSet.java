@@ -4,6 +4,7 @@
 class Node {
     int item;
     Node next;
+
     Node(int item) {
         this.item = item;
     }
@@ -21,27 +22,58 @@ public class LinkedListMultiSet extends MultiSet {
         Node newNode =  new Node(item);
         newNode.next = front;
         front = newNode;
-        size += 1;
+        size++;
     }
 
     public void remove(int item) {
+        Node curr = front;
+        Node prev = null;
 
+        while (curr != null) {
+            if (curr.item == item) {
+                size--;
+                if (prev != null) {
+                    prev.next = curr.next;
+                } else {
+                    this.front = curr.next;
+                }
+                return;
+            }
+            prev = curr;
+            curr = curr.next;
+        }
     }
 
     public boolean contains(int item) {
+        Node curr = front;
+        while (curr != null) {
+            if (curr.item == item) {
+                return true;
+            }
+            curr = curr.next;
+        }
         return false;
     }
 
     public boolean isEmpty() {
-        return false;
+        return front == null;
     }
 
 
     public int count(int item) {
-        return -1;
+        int numSeen = 0;
+        Node curr = front;
+
+        while (curr != null) {
+            if (curr.item == item) {
+                numSeen++;
+            }
+            curr = curr.next;
+        }
+        return numSeen;
     }
 
     public int size() {
-        return -1;
+        return size;
     }
 }
